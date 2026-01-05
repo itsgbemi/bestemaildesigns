@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Monitor, Smartphone, Sparkles, ShoppingCart, CheckCircle2 } from 'lucide-react';
+import { X, Monitor, Smartphone, ShoppingCart } from 'lucide-react';
 import { Product } from '../types';
-import { generateTemplateCopy } from '../services/geminiService';
 
 interface ProductPreviewModalProps {
   product: Product | null;
@@ -13,24 +12,14 @@ interface ProductPreviewModalProps {
 
 const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({ product, isOpen, onClose, onAddToCart }) => {
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
-  const [aiCopy, setAiCopy] = useState<{ headline: string, body: string } | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
-      setAiCopy(null);
       setViewMode('desktop');
     }
   }, [isOpen]);
 
   if (!product) return null;
-
-  const handleGenerateCopy = async () => {
-    setIsLoading(true);
-    const copy = await generateTemplateCopy(product.title);
-    setAiCopy(copy);
-    setIsLoading(false);
-  };
 
   return (
     <div className={`fixed inset-0 z-[120] flex items-center justify-center p-4 transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
@@ -57,27 +46,9 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({ product, isOp
             <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Live Preview Mode</span>
           </div>
 
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex items-center justify-center overflow-hidden">
             <div className={`bg-white shadow-2xl transition-all duration-500 overflow-hidden relative ${viewMode === 'desktop' ? 'w-full aspect-video rounded-lg' : 'w-[320px] h-[540px] rounded-[32px] border-[8px] border-gray-900'}`}>
               <img src={product.image} alt="Preview" className="w-full h-full object-cover" />
-              
-              {/* AI Content Overlay */}
-              {aiCopy && (
-                <div className="absolute inset-0 bg-white/95 p-8 flex flex-col justify-center animate-in fade-in zoom-in-95">
-                  <h3 className="text-2xl font-bold mb-4 text-dark-text">{aiCopy.headline}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">{aiCopy.body}</p>
-                  <div className="mt-auto flex items-center gap-2 text-pastel-green font-bold text-sm">
-                    <CheckCircle2 size={16} /> AI Generated Context
-                  </div>
-                </div>
-              )}
-
-              {isLoading && (
-                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 border-4 border-pastel-green border-t-transparent rounded-full animate-spin mb-4"></div>
-                  <p className="font-bold text-pastel-green animate-pulse">Writing your copy...</p>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -107,18 +78,15 @@ const ProductPreviewModal: React.FC<ProductPreviewModalProps> = ({ product, isOp
                 Save hours of work with this professional, drag-and-drop compatible layout. Perfect for marketing campaigns, newsletters, and announcements.
               </p>
             </div>
-
-            <div className="space-y-3">
-              <button 
-                onClick={handleGenerateCopy}
-                disabled={isLoading}
-                className="w-full group flex items-center justify-center gap-3 py-3 border-2 border-dashed border-pastel-green rounded-xl text-pastel-green font-bold text-sm hover:bg-pastel-green hover:text-white transition-all disabled:opacity-50"
-              >
-                <Sparkles size={18} className="group-hover:animate-bounce" />
-                Fill with AI Content
-              </button>
-              <p className="text-[10px] text-center text-gray-400 uppercase tracking-widest font-bold">Try it before you buy it</p>
-            </div>
+            
+            <ul className="space-y-3">
+              {['Fully Responsive', 'Dark/Light Support', 'Email Service Ready', 'Vector Assets Included'].map((feat) => (
+                <li key={feat} className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pastel-green" />
+                  {feat}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="pt-8 border-t border-gray-100 flex flex-col gap-4">

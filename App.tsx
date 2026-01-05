@@ -105,15 +105,6 @@ const App: React.FC = () => {
         product={selectedProduct}
         onAddToCart={handleAddToCart}
       />
-
-      {/* Floating Chat Trigger Mock */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <button className="bg-[#48bdb2] text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </button>
-      </div>
     </div>
   );
 };

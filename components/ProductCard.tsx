@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
-import { Heart, Plus, Eye, Sparkles } from 'lucide-react';
+import { Heart, Plus, Eye } from 'lucide-react';
 import { Product } from '../types';
-import { generateSubjectLines } from '../services/geminiService';
 
 interface ProductCardProps {
   product: Product;
@@ -12,22 +11,6 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onPreview }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showSubjectLines, setShowSubjectLines] = useState(false);
-  const [subjects, setSubjects] = useState<string[]>([]);
-  const [isLoadingSubjects, setIsLoadingSubjects] = useState(false);
-
-  const handleAIHelp = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (subjects.length > 0) {
-      setShowSubjectLines(!showSubjectLines);
-      return;
-    }
-    setIsLoadingSubjects(true);
-    const ideas = await generateSubjectLines(product.title);
-    setSubjects(ideas);
-    setIsLoadingSubjects(false);
-    setShowSubjectLines(true);
-  };
 
   return (
     <div 
@@ -79,14 +62,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onPrevi
           </button>
         </div>
 
-        {/* AI Helper Trigger */}
-        <button 
-          onClick={handleAIHelp}
-          className="absolute bottom-4 left-4 p-2 bg-white/90 backdrop-blur rounded-full shadow-sm text-xs font-bold border border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1"
-        >
-          {isLoadingSubjects ? 'Thinking...' : <><Sparkles size={12} className="text-pastel-green" /> Subject Ideas</>}
-        </button>
-
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
           <div className="bg-white/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
             <Eye size={18} className="text-pastel-green" />
@@ -108,28 +83,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onPrevi
           ${product.price}
         </div>
       </div>
-
-      {/* Subject Lines Popover */}
-      {showSubjectLines && (
-        <div 
-          className="absolute bottom-full left-0 right-0 mb-4 bg-white p-4 rounded-xl shadow-2xl border border-gray-100 z-10 animate-in fade-in slide-in-from-bottom-2"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex justify-between items-center mb-3">
-            <h4 className="text-xs font-bold uppercase text-gray-400">AI Suggested Subject Lines</h4>
-            <button onClick={() => setShowSubjectLines(false)} className="text-gray-400 hover:text-gray-600">
-              <Plus className="rotate-45" size={16} />
-            </button>
-          </div>
-          <ul className="space-y-2">
-            {subjects.map((s, idx) => (
-              <li key={idx} className="text-sm text-gray-700 p-2 bg-gray-50 rounded hover:bg-teal-50 border border-transparent hover:border-teal-100 cursor-pointer">
-                {s}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };
