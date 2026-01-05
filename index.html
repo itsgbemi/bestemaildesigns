@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemplateFlow | Premium Email Templates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'pastel-green': '#0b7f7b',
+              'beige-bg': '#faf7f2',
+              'dark-text': '#212022',
+            },
+            fontFamily: {
+              outfit: ['Outfit', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Outfit', sans-serif;
+        background-color: #faf7f2;
+        color: #212022;
+        margin: 0;
+      }
+      /* Smooth global transitions */
+      * { transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Explicitly load index.tsx as a module -->
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
