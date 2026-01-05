@@ -2,85 +2,85 @@
 import { Product, Category } from './types';
 
 export const CATEGORIES: Category[] = [
-  { id: 'all', label: 'All Categories' },
-  { id: 'minimalist', label: 'Minimalist' },
-  { id: 'ecommerce', label: 'E-commerce' },
-  { id: 'newsletter', label: 'Newsletter' },
+  { id: 'all', label: 'All Templates' },
+  { id: 'therapy', label: 'Therapy & Wellness' },
+  { id: 'skincare', label: 'Skincare' },
+  { id: 'beauty', label: 'Beauty & Cosmetics' },
+  { id: 'fashion', label: 'Fashion & Apparel' },
+  { id: 'ecommerce', label: 'E-commerce Flows' },
   { id: 'welcome', label: 'Welcome Series' },
-  { id: 'abandoned', label: 'Cart Abandoned' },
-  { id: 'holiday', label: 'Holiday' },
-  { id: 'corporate', label: 'Corporate' },
+  { id: 'newsletter', label: 'Monthly Newsletters' },
 ];
 
 export const PRODUCTS: Product[] = [
   {
     id: '1',
-    title: 'Abodio – A Hand-Painted Editorial Template',
-    author: 'Komet & Flicker',
-    category: 'newsletter',
-    price: 17,
-    image: 'https://picsum.photos/seed/abodio/600/400',
+    title: 'The Wellness Flow – Mindful Therapy Template',
+    author: 'Serene Studio',
+    category: 'therapy',
+    price: 24,
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800',
     isFeatured: true
   },
   {
     id: '2',
-    title: 'Noël 02 | Holiday Social & Email Kit',
-    author: 'Simple co',
-    category: 'holiday',
-    price: 30,
-    image: 'https://picsum.photos/seed/noel/600/400',
+    title: 'Glow Journal – Skincare Routine Series',
+    author: 'Radiance Design',
+    category: 'skincare',
+    price: 29,
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800',
     isFeatured: true
   },
   {
     id: '3',
-    title: 'Editorial Society - Luxury Font Duo & Template',
-    author: 'Davide Bassu',
-    category: 'corporate',
-    price: 24,
-    image: 'https://picsum.photos/seed/editorial/600/400',
+    title: 'Vogue Editorial – High-Fashion E-commerce',
+    author: 'Catwalk Creatives',
+    category: 'fashion',
+    price: 35,
+    image: 'https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800',
     isFeatured: true
   },
   {
     id: '4',
-    title: 'Garden State - Aesthetic E-commerce Series',
-    author: 'Bruised Goods',
-    category: 'ecommerce',
-    price: 25,
-    image: 'https://picsum.photos/seed/garden/600/400',
+    title: 'Pure Beauty – Minimalist Cosmetic Launch',
+    author: 'Aura Agency',
+    category: 'beauty',
+    price: 22,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     isFeatured: true
   },
   {
     id: '5',
-    title: 'TOMMY - New Classic Minimalist Set',
-    author: 'MadeType',
-    category: 'minimalist',
-    price: 14,
-    image: 'https://picsum.photos/seed/tommy/600/400',
+    title: 'Self-Care Sundays – Holistic Wellness Flow',
+    author: 'Serene Studio',
+    category: 'therapy',
+    price: 19,
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800',
     isSale: true
   },
   {
     id: '6',
-    title: 'Peachcream - Elegant Welcome Flow',
-    author: 'Peachcrem',
-    category: 'welcome',
-    price: 18,
-    image: 'https://picsum.photos/seed/peach/600/400',
+    title: 'Botanical Dew – Natural Skincare Newsletter',
+    author: 'Radiance Design',
+    category: 'skincare',
+    price: 21,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
     isSale: true
   },
   {
     id: '7',
-    title: 'BUNGALOW - 1970s Retro Layouts',
-    author: '70s Surf',
-    category: 'newsletter',
-    price: 22,
-    image: 'https://picsum.photos/seed/bungalow/600/400'
+    title: 'Street Style – Urban Fashion Weekly',
+    author: 'Catwalk Creatives',
+    category: 'fashion',
+    price: 25,
+    image: 'https://images.unsplash.com/photo-1454165833767-6216d494a023?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: '8',
-    title: 'The Roman Edition - Serif Email Suite',
-    author: 'Silverstag',
-    category: 'corporate',
+    title: 'Client Connection – Professional Therapy Intro',
+    author: 'Clinical Designs',
+    category: 'therapy',
     price: 28,
-    image: 'https://picsum.photos/seed/roman/600/400'
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800'
   }
 ];
